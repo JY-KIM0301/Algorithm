@@ -1,10 +1,8 @@
-package String;
-
 import java.util.Scanner;
 
 //각 문자를 R번 반복해서 새 문자열 P를 만드는 프로그램
 
-public class boj_2675 {
+public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
