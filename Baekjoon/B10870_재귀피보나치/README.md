@@ -1,24 +1,58 @@
-# ex) 백준 2562: 최댓값
-link:  
+# ex) 백준 10872: 피보나치
+https://www.acmicpc.net/problem/10870
 
 ## 문제
+피보나치 수는 0과 1로 시작한다. 0번째 피보나치 수는 0이고, 1번째 피보나치 수는 1이다. 그 다음 2번째 부터는 바로 앞 두 피보나치 수의 합이 된다.
 
+이를 식으로 써보면 Fn = Fn-1 + Fn-2 (n ≥ 2)가 된다.
+
+n=17일때 까지 피보나치 수를 써보면 다음과 같다.
+
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597
+
+n이 주어졌을 때, n번째 피보나치 수를 구하는 프로그램을 작성하시오.
 
 **예제 입력**
 ```
-
+10
 ```
 
 **예제 출력**
 ```
-
+55
 ```
 
 ## 풀이 코드
 
 ``` java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int n = Integer.parseInt(br.readLine());
+		
+		System.out.println(f(n));
+		
+	}
+	
+	public static int f(int n) {
+		if(n >= 2) {
+			return f(n-1) + f(n-2);	
+		}
+		return n;
+		
+	}
+}
 
 ```
 `#java`
 
 **설명**    
+재귀함수를 이용하여 피보나치 수열을 구현한 것이다. 코드는 매우 간단하다. 
+Fn = Fn-1 + Fn-2 (n ≥ 2) 이부분을 재귀함수부에 그대로 표현하면 된다. 
+n >= 2 인 경우에 ```return f(n-1) + f(n-2);``` 를 반환하고 f(n)을 다시 호출할때 n번째에 해당하는
+피보나치 수를 구할수 있다. 
