@@ -1,4 +1,4 @@
-# ex) 백준 10872: 피보나치
+# 백준 10872: 피보나치
 https://www.acmicpc.net/problem/10870
 
 ## 문제
