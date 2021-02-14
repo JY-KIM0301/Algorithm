@@ -11,11 +11,10 @@ public class P같은숫자는싫어 {
     public int[] solution(int []arr) {
     	ArrayList<Integer> list = new ArrayList<Integer>(); // int타입 ArrayList 선언
     	
-    	// 생성한 ArrayList에서 중복을 제거하고 배열을 출력 
     	int preNum = 10;
     	for(int num : arr) {
     		if(preNum != num)
-    			list.add(num); // list에 중복없이 num추가 
+    			list.add(num); // list에 num추가 
     		preNum = num;
     	}
     	int[] answer = new int[list.size()]; // size() -> list의 크기 반환
