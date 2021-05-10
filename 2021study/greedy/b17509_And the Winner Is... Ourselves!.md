@@ -45,11 +45,11 @@ list_m = []
 for i in list:
     list_m.append(i[0])
 
-dp = [0] * 11
-dp[0] = list_m[0]
+arr = [0] * 11
+arr[0] = list_m[0]
 for i in range(1, 11):
-    dp[i] = dp[i-1] + list_m[i]
-sum_time = sum(dp[0:])
+    arr[i] = arr[i-1] + list_m[i]
+sum_time = sum(arr[0:])
 
 for x, y in list:
     sum_error += y*20
