@@ -31,3 +31,82 @@ hex_dig = hash_object.hexdigest()
 print(hex_dig)
 
 # a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+```
+## 리스트로 해쉬 테이블 구현 
+```python
+class HashTable:
+  # 크기 8을 가지는 해쉬 테이블 초기화 
+  def __init__(self):
+    self.hash_table = list([0 for i in range(8)])
+    
+  def hash_function(self, key):
+    return key % 8
+  
+  # key, value값을 해쉬 테이블에 삽입 
+  def insert(self, key, value):
+    hash_value = self.hash_function(hash(key))
+    self.hash_table[hash_value] = value
+  
+  # key값을 이용해 value값을 얻는 read() 함수 
+  def read(self, key):
+    hash_value = self.hash_function(hash(key))
+    return self.hash_table[hash_value]    
+  
+  def print(self):
+    print(self.hash_table)
+```
+
+## 충돌 해결 알고리즘
+- 위의 해쉬테이블 코드에서 같은 key값에 서로다른 데이터가 들어가면, 충돌이 발생할 것이다. 
+- 이러한 충돌(Collision)문제를 해결하기 위한 3가지 방법이 있다. 
+
+### 1. Chaining 기법 
+- Open Hashing 기법 중 하나로, 해쉬테이블 저장공간 외에 공간을 더 추가해서 사용하는 방법.  
+- 충돌이 발생하면, Linked List로 데이터를 추가적으로 뒤에 연결시킨다. 
+```python
+class HashTable_Chaining:
+  def __init__(self):
+    self.hash_table = list([0 for i in range(8)])
+    
+  def hash_function(self, key):
+    return key % 8
+  
+  # key, value값을 해쉬 테이블에 삽입 
+  def insert(self, key, value):
+    gen_key = hash(key)
+    hash_value = self.function(gen_key)
+    
+    # hash value의 index를 이미 사용중인 경우 (충돌발생) 
+    if self.hash_table[hash_value] != 0:
+      for i in range(len(self.hash_table[hash_value])):
+        # 이미 같은 키가 존재한다면, value를 교체
+        if self.hash_table[hash_value][i][0] == gen_key:
+          self.hash_table[hash_value][i][1] = value
+          return 
+      # 같은 키가 존재하지 않는경우, [key, value]를 삽입 
+      self.hash_table[hash_value].append([gen_key, value])
+    # 해당 hash_value를 사용하고 있지 않은 경우 
+    else:
+      self.hash_table[hash_value] = [[gen_key, value]]
+  
+  def read(self, key):
+    gen_key = hash(key)
+    hash_value = self.function(gen_key)   
+    
+    # 해당 해쉬값index에 데이터가 들어있는 경우 
+    if self.hash_table[hash_value] != 0: 
+    
+      # 해당 해쉬 값 index에 데이터가 존재할 때, 
+      for i in range(len(self.hash_table[hash_value])): 
+        if self.hash_table[hash_value][i][0] == gen_key: 
+        # 키와 동일할 경우 -> 해당 value return return 
+          self.hash_table[hash_value][i][1] 
+      # 동일한 키가 존재하지 않으면 None return 
+      return None 
+    else: 
+      # 해당 해쉬 값 index에 데이터가 없을 때, 
+      return None
+
+  def print(self):
+    print(self.hash_table)
+```
