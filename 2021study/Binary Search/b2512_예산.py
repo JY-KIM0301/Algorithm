@@ -6,7 +6,7 @@ n = int(input())
 budget_list = list(map(int, input().split()))
 m = int(input())
 
-start = min(budget_list)  # 예산 최솟값 저장
+start = 1 
 end = max(budget_list)  # 예산 최댓값 저장
 
 while start <= end:
