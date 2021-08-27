@@ -19,4 +19,4 @@
 ##
 ### Language
 
-`#Python` `#node.js`
+`Python`
